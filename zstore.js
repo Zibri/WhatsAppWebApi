@@ -1,14 +1,2 @@
-// run this as a content script after fully loading web.whatsapp.com
-// or execute this in the developer tools javascript console
-// to find and set the global variable ZStore to the whatsapp API.
-
-!function() {
-    for (var t of document.getElementsByTagName("script")) t.src.indexOf("/app.") > 0 && fetch(t.src, {
-        method: "get"
-    }).then(function(t) {
-        return t.text().then(function(t) {
-            var e = t.indexOf('var a={};t["default"]') - 89;
-            window.ZStore = window.webpackJsonp([], null, JSON.stringify(t.substr(e, 10))).default;
-        });
-    });
-}();
+!function(){const o=function(e){o.mID=Math.random().toString(36).substring(7);o.mObj={};o.cArr=[];o.mGet=null;e?o.debug=!0:window.mRdebug?o.debug=!0:o.debug=!1;o.log=function(e){o.debug&&console.warn(`[moduleRaid] ${e}`)};o.args=[[[0],[function(e,n,t){mCac=t.c;Object.keys(mCac).forEach(function(e){o.mObj[e]=mCac[e].exports});o.cArr=t.m;o.mGet=t}]],[[1e3],{[o.mID]:function(e,n,t){mCac=t.c;Object.keys(mCac).forEach(function(e){o.mObj[e]=mCac[e].exports});o.cArr=t.m;o.mGet=t}},[[o.mID]]]];fillModuleArray=function(){if("function"==typeof webpackJsonp)o.args.forEach(function(e,n){try{webpackJsonp(...e)}catch(e){o.log(`moduleRaid.args[${n}] failed: ${e}`)}});else try{webpackJsonp.push(o.args[1])}catch(e){o.log(`Pushing moduleRaid.args[1] into webpackJsonp failed: ${e}`)}if(0==o.mObj.length){mEnd=!1;mIter=0;if(!webpackJsonp([],[],[mIter]))throw Error("Unknown Webpack structure");for(;!mEnd;)try{o.mObj[mIter]=webpackJsonp([],[],[mIter]);mIter++}catch(o){mEnd=!0}}};fillModuleArray();get=function(e){return o.mObj[e]};findModule=function(e){results=[];modules=Object.keys(o.mObj);modules.forEach(function(n){mod=o.mObj[n];if("undefined"!=typeof mod){if("object"==typeof mod.default)for(key in mod.default)key==e&&results.push(mod);for(key in mod)key==e&&results.push(mod)}});return results};findFunction=function(e){if(0==o.cArr.length)throw Error("No module constructors to search through!");results=[];if("string"==typeof e)o.cArr.forEach(function(n,t){n.toString().includes(e)&&results.push(o.mObj[t])});else{if("function"!=typeof e)throw new TypeError("findFunction can only find via string and function, "+typeof e+" was passed");modules=Object.keys(o.mObj);modules.forEach(function(n,t){mod=o.mObj[n];e(mod)&&results.push(o.mObj[t])})}return results};return{modules:o.mObj,constructors:o.cArr,findModule:findModule,findFunction:findFunction,get:o.mGet?o.mGet:get}};"object"==typeof module&&module.exports?module.exports=o:window.mR=o();window.Store=window.mR.findModule("Conn")[0].default}();
+// window.Store contains WhatsAppWebApi
